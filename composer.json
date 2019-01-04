@@ -1,9 +1,9 @@
 {
-    "name": "hcodebr/ecommerce",
+    "name": "arbex10/ecommerce",
     "authors": [
         {
-            "name": "Hcode Treinamentos",
-            "email": "suporte@hcode.com.br"
+            "name": "Lucas Arbex",
+            "email": "lucasarbexmb@gmail.com"
         }
     ],
     "require": {
