@@ -9,12 +9,14 @@ class Page {
 	private $tpl;
 	private $options = [];
 	private $defaults = [
+		"header"=>true,
+		"footer"=>true,
 		"data"=>[]
 	];
 
 	// CONSTRÓI O TEMPLATE HEADER COMO CONSTRUTOR
-	public function __construct($opts = array(), $tpl_dir = "/views/") {
-
+	public function __construct($opts = array(), $tpl_dir = "/views/")
+	{
 		$this->options = array_merge($this->defaults, $opts);
 
 		$config = array(
@@ -29,33 +31,30 @@ class Page {
 
 		$this->setData($this->options['data']);
 
-		$this->tpl->draw('header');
-
+		if($this->options['header'] === true) $this->tpl->draw('header');
 	}
 
 	// COLOCA TODOS OS CONTEÚDOS PARA A VARIÁVEL DATA
-	private function setData($data = array()) {
-
-		foreach ($data as $key => $value) {
+	private function setData($data = array())
+	{
+		foreach ($data as $key => $value)
+		{
 			$this->tpl->assign($key, $value);
 		}
-
 	}
 
 	// CONSTRÓI O CONTEÚDO HTML DA PÁGINA
-	public function setTpl($name, $data = array(), $returnHTML = false) {
-	
+	public function setTpl($name, $data = array(), $returnHTML = false)
+	{
 		$this->setData($data);
 
 		return $this->tpl->draw($name, $returnHTML);
-
 	}
 
 	// AO DESTRUIR, TERMINAR POR ADICIONAR O FOOTER
-	public function __destruct() {
-
-		$this->tpl->draw('footer');
-
+	public function __destruct()
+	{
+		if($this->options['footer'] === true) $this->tpl->draw('footer');
 	}
 
 }
