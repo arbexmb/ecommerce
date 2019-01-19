@@ -7,7 +7,7 @@ use Rain\Tpl;
 class Mailer {
 
 	const USERNAME = "arbexildo@gmail.com";
-	const PASSWORD = "";
+	const PASSWORD = "alicenaif1";
 	const NAME_FROM = "Store Echo Games";
 
 	private $mail;
@@ -15,9 +15,9 @@ class Mailer {
 	public function __construct($toAdress, $toName, $subject, $tplName, $data = array())
 	{
 		$config = array(
-			"tpl_dir"       => $_SERVER['DOCUMENT_ROOT']."/views/email/",
-			"cache_dir"     => $_SERVER['DOCUMENT_ROOT']."/views-cache/",
-			"debug"         => false
+			"tpl_dir"	   => $_SERVER['DOCUMENT_ROOT']."/views/email/",
+			"cache_dir"	 => $_SERVER['DOCUMENT_ROOT']."/views-cache/",
+			"debug"		 => false
 		);
 		
 		Tpl::configure( $config );
@@ -33,11 +33,6 @@ class Mailer {
 		$this->mail = new \PHPMailer;
 
 		$this->mail->isSMTP();
-		$this->mail->SMTPDebug = 0;
-		$this->mail->Host = 'smtp.gmail.com';
-		$this->mail->Port = 587;
-		$this->mail->SMTPSecure = 'tls';
-		$this->mail->SMTPAuth = true;
 		$this->mail->SMTPOptions = array(
 			'ssl' => array(
 				'verify_peer' => false,
@@ -45,6 +40,11 @@ class Mailer {
 				'allow_self_signed' => true
 			)
 		);
+		$this->mail->SMTPDebug = 0;
+		$this->mail->Host = 'smtp.gmail.com';
+		$this->mail->Port = 587;
+		$this->mail->SMTPSecure = 'tls';
+		$this->mail->SMTPAuth = true;
 		$this->mail->Username = Mailer::USERNAME;
 		$this->mail->Password = Mailer::PASSWORD;
 		$this->mail->setFrom(Mailer::USERNAME, Mailer::NAME_FROM);

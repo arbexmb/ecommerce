@@ -383,8 +383,8 @@
         <td class="header container" align="center">
           <div class="content">
             <span class="brand">
-              <a href="#">
-                Hcode Store
+              <a href="http://store.echogames.com.br">
+                Store | Echo Games
               </a>
             </span>
           </div>
